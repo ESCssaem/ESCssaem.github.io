@@ -1,0 +1,17 @@
+{
+  "name": "생물다양성 XR · 종다양성 방형구 조사",
+  "short_name": "방형구 조사",
+  "description": "두 지역의 방형구에서 식물을 세어 종다양성(풍부도·균등도)을 비교하는 웹 XR 수업 활동",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#b9d7ee",
+  "theme_color": "#2c5a26",
+  "icons": [
+    { "src": "icons/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "icons/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "icons/icon-512-maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}

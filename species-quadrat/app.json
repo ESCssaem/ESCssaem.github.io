@@ -1,0 +1,24 @@
+{
+  "schema": "esc-xr-app/1",
+  "id": "species-quadrat",
+  "title": "종다양성 방형구 조사",
+  "series": "생물다양성 XR",
+  "version": "0.3.0",
+  "updated": "2026-10-17",
+  "audience": "고등학교 1학년 통합과학",
+  "topic": "생물다양성 — 종다양성(풍부도·균등도)",
+  "minutes": 5,
+  "devices": [
+    "PC 브라우저",
+    "휴대폰·태블릿 브라우저",
+    "Meta Quest 브라우저(VR)"
+  ],
+  "author": "ESC쌤(양지고)",
+  "license": "수업 활용 자유 · 무단 복제·수정 배포 금지",
+  "source": "",
+  "privacy": "이 앱은 개인정보·이용 기록을 수집하거나 저장하지 않고, 외부 서버에 요청을 보내지 않습니다.",
+  "notices": "THIRD_PARTY_NOTICES.txt",
+  "basedOn": "생물다양성 XR 탐험(Quest 앱) ② 종다양성 구역을 웹으로 옮김",
+  "licenseDetail": "학교 수업·연수·비영리 교육에서 이 주소로 자유롭게 쓸 수 있습니다. 앱이나 그 일부를 복제·수정해 다른 곳에 배포하는 것은 허락하지 않습니다. © 2026 ESC쌤(양지고)",
+  "url": "https://escssaem.github.io/species-quadrat/"
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>종다양성 방형구 조사 · 생물다양성 XR</title>
+    <meta name="description" content="두 지역의 방형구에서 식물을 세어 종다양성(풍부도·균등도)을 비교하는 웹 XR 수업 활동. PC 브라우저와 Meta Quest 브라우저(VR)에서 같은 주소로 실행됩니다." />
+    <meta name="theme-color" content="#2c5a26" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="종다양성 방형구 조사 · 생물다양성 XR" />
+    <meta property="og:description" content="PC와 VR에서 함께 쓰는 고1 통합과학 종다양성 탐구 활동" />
+    <meta property="og:image" content="icons/icon-512.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <style>
+      :root { --ink: #1f2a1f; --green: #2c5a26; --muted: #5a6a56; --card: rgba(255, 255, 255, 0.94); }
+      body { margin: 0; background: #b9d7ee; overflow: hidden; color: var(--ink);
+        font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+      #scene-container, #scene-container canvas { width: 100vw; height: 100vh; display: block; }
+      #overlay {
+        position: fixed; bottom: 16px; left: 16px; max-width: min(300px, calc(100vw - 32px));
+        padding: 12px 14px; border-radius: 14px; background: var(--card);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      }
+      #overlay h1 { margin: 0 22px 6px 0; font-size: 17px; color: var(--green); }
+      #overlay p { margin: 0; font-size: 14px; line-height: 1.5; }
+      #vr-button {
+        margin-top: 10px; width: 100%; padding: 12px; border: 0; border-radius: 10px;
+        background: var(--green); color: #fff; font-size: 16px; font-weight: 700; cursor: pointer;
+      }
+      #vr-note { margin-top: 8px; font-size: 12px; color: var(--muted); }
+      .row { display: flex; gap: 12px; margin-top: 8px; font-size: 12px; }
+      .link { border: 0; background: none; padding: 0; color: var(--green); text-decoration: underline;
+        font: inherit; cursor: pointer; }
+      #overlay-close {
+        position: absolute; top: 6px; right: 8px; border: 0; background: none;
+        font-size: 18px; color: var(--muted); cursor: pointer; padding: 2px 6px;
+      }
+      dialog { max-width: min(460px, calc(100vw - 48px)); border: 0; border-radius: 16px; padding: 20px 22px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); color: var(--ink); }
+      dialog::backdrop { background: rgba(0, 0, 0, 0.35); }
+      dialog h2 { margin: 0 0 4px; font-size: 18px; color: var(--green); }
+      dialog dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 14px 0; font-size: 14px; }
+      dialog dt { color: var(--muted); }
+      dialog dd { margin: 0; }
+      dialog .small { font-size: 12px; color: var(--muted); line-height: 1.5; }
+      dialog form { text-align: right; margin-top: 12px; }
+      dialog button { padding: 8px 16px; border: 0; border-radius: 8px; background: var(--green); color: #fff;
+        font-weight: 700; cursor: pointer; }
+      @media (max-width: 480px) { #overlay { bottom: 8px; left: 8px; padding: 10px 12px; } #overlay p { font-size: 13px; } }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BohsLemO.js"></script>
+  </head>
+  <body>
+    <div id="scene-container"></div>
+    <div id="overlay">
+      <button id="overlay-close" aria-label="안내 닫기">×</button>
+      <h1>생물다양성 XR · 종다양성 방형구 조사</h1>
+      <p>식물을 클릭(터치)해 세어 보세요. 화면을 끌면 둘러볼 수 있어요.<br />Quest: 아래 버튼으로 VR에 들어가 컨트롤러 트리거로 고릅니다.</p>
+      <button id="vr-button" hidden>VR로 체험하기</button>
+      <p id="vr-note">이 브라우저는 VR을 지원하지 않아 화면 모드로 실행 중입니다.</p>
+      <div class="row"><button class="link" id="info-button">앱 정보·만든 사람</button></div>
+    </div>
+    <dialog id="info">
+      <h2 id="info-title">종다양성 방형구 조사</h2>
+      <div class="small" id="info-series"></div>
+      <dl>
+        <dt>대상</dt><dd id="info-audience"></dd>
+        <dt>주제</dt><dd id="info-topic"></dd>
+        <dt>기기</dt><dd id="info-devices"></dd>
+        <dt>버전</dt><dd id="info-version"></dd>
+        <dt>만든 사람</dt><dd id="info-author"></dd>
+        <dt>라이선스</dt><dd id="info-license"></dd>
+      </dl>
+      <p class="small" id="info-terms"></p>
+      <p class="small" id="info-privacy"></p>
+      <p class="small">
+        Meta Immersive Web SDK, three.js 등 오픈소스로 만들었습니다.
+        <a href="THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener">오픈소스 라이선스 고지</a>
+        <span id="info-source"></span>
+      </p>
+      <form method="dialog"><button>닫기</button></form>
+    </dialog>
+  </body>
+</html>
