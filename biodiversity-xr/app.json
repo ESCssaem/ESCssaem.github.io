@@ -1,0 +1,17 @@
+{
+  "schema": "esc-xr-app/1",
+  "id": "biodiversity-xr",
+  "kind": "apk",
+  "title": "생물다양성 XR 탐험 (Quest 앱 전체판)",
+  "series": "생물다양성 XR",
+  "version": "0.1.5",
+  "updated": "2026-10-18",
+  "audience": "고등학교 1학년 통합과학",
+  "topic": "생물다양성의 세 수준 — 유전적 다양성·종다양성·생태계다양성",
+  "devices": [
+    "Meta Quest 3/3S (교사 확인 후 APK 제공)"
+  ],
+  "author": "ESC쌤(양지고)",
+  "license": "수업 활용 자유 · 무단 복제·수정 배포 금지",
+  "icon": "images/icon-192.png"
+}

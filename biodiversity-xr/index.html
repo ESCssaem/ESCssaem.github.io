@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>생물다양성 XR 탐험 · Quest 앱 전체판</title>
+    <meta name="description" content="고1 통합과학 생물다양성 XR 수업 앱(Meta Quest 3/3S) 전체판 신청과 설치 안내" />
+    <meta name="theme-color" content="#141f29" />
+    <link rel="icon" type="image/png" href="images/icon-192.png" />
+    <style>
+      :root { --bg: #f3f6f4; --card: #ffffff; --ink: #1d2a24; --dim: #5d6b64; --accent: #2e7a5a; --accent-ink: #ffffff;
+        --line: #dfe6e2; --warn-bg: #fff6df; --warn-line: #f0d68c; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #141f29; --card: #1d2a35; --ink: #eef3f1; --dim: #a9b8b2; --accent: #5cd19e; --accent-ink: #0f1a14;
+          --line: #2c3b47; --warn-bg: #2f2a18; --warn-line: #6b5a24; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.65;
+        font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+      main { max-width: 880px; margin: 0 auto; padding: 32px 16px 64px; }
+      a { color: var(--accent); }
+      .crumb { font-size: 13px; }
+      h1 { margin: 8px 0 4px; font-size: 26px; line-height: 1.3; }
+      h2 { margin: 36px 0 10px; font-size: 19px; }
+      h3 { margin: 18px 0 6px; font-size: 16px; }
+      .lead { margin: 0 0 18px; color: var(--dim); }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+      .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
+      .shots figure { margin: 0; }
+      .shots img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
+      .shots figcaption { font-size: 12px; color: var(--dim); margin-top: 4px; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { color: var(--dim); font-weight: 600; }
+      .dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+      .dl .card { display: flex; flex-direction: column; gap: 8px; }
+      .btn { display: inline-block; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: var(--accent-ink);
+        font-weight: 700; text-decoration: none; text-align: center; }
+      .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+      .small { font-size: 13px; color: var(--dim); }
+      code { font-size: 12px; word-break: break-all; }
+      .warn { background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+      ol, ul { padding-left: 22px; margin: 6px 0; }
+      li { margin: 3px 0; }
+      footer { margin-top: 44px; font-size: 12px; color: var(--dim); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="crumb"><a href="../">← ESC쌤의 XR 수업 앱</a></div>
+      <h1>생물다양성 XR 탐험 — Quest 앱 전체판</h1>
+      <p class="lead">고등학교 1학년 통합과학 · 생물다양성의 세 수준(유전적·종·생태계다양성)을 Meta Quest 3/3S에서 직접 체험하는 수업 앱입니다.
+        웹 체험판(② 종다양성 한 구역)을 써 보고 수업 전체를 하고 싶은 선생님께 교사 확인 후 드리는 설치용 자료입니다.</p>
+
+      <div class="shots">
+        <figure><img src="images/zone1-genetic.jpg" alt="1. 유전적 다양성 구역: 무당벌레 두 집단에 전염병이 돌았을 때 비교" loading="lazy" />
+          <figcaption>1. 유전적 다양성 — 무늬가 다양한 집단과 한 가지인 집단 비교</figcaption></figure>
+        <figure><img src="images/zone2-species.jpg" alt="2. 종다양성 구역: 두 방형구의 종별 막대그래프" loading="lazy" />
+          <figcaption>2. 종다양성 — 방형구 조사와 막대그래프</figcaption></figure>
+        <figure><img src="images/zone3-ecosystem.jpg" alt="3. 생태계다양성 구역: 생물 모형을 서식지 디오라마에 놓기" loading="lazy" />
+          <figcaption>3. 생태계다양성 — 생물을 주 서식지에 놓기</figcaption></figure>
+      </div>
+
+      <h2>웹 체험판과 전체판</h2>
+      <div class="card">
+        <table>
+          <tr><th></th><th>웹 체험판</th><th>Quest 앱 전체판</th></tr>
+          <tr><td>내용</td><td>② 종다양성 1개 구역</td><td>입구 → ① 유전적 → ② 종 → ③ 생태계다양성 → ④ 360 생태계 탐험 → ⑤ 360 현장 탐방(스트리트뷰·360 사진) → ⑥ 퀴즈 → 탐험 완료</td></tr>
+          <tr><td>설치</td><td>필요 없음 — <a href="../species-quadrat/">주소만 열기</a></td><td>헤드셋마다 APK 설치(개발자 모드 필요)</td></tr>
+          <tr><td>기기</td><td>PC·휴대폰 브라우저, Quest 브라우저</td><td>Meta Quest 3/3S</td></tr>
+          <tr><td>조작</td><td>가리키고 트리거(클릭)</td><td>손으로 집기·놓기, 가리키기, 버튼</td></tr>
+          <tr><td>교사 준비</td><td>없음</td><td>수업 준비 도구로 설치와 360 장면 보내기(Windows·Mac)</td></tr>
+        </table>
+      </div>
+
+      <h2>받는 방법 <span class="small">현재 버전 0.1.5 · 2026-10-18</span></h2>
+      <div class="card">
+        <p style="margin-top:0">전체판(APK)은 <b>교사 확인을 거친 선생님께만</b> 보내 드립니다. 아래 중 편한 곳으로 문의해 주세요.</p>
+        <div class="dl">
+          <a class="btn" href="mailto:escssaem@naver.com?subject=%5B%EC%83%9D%EB%AC%BC%EB%8B%A4%EC%96%91%EC%84%B1%20XR%5D%20%EC%A0%84%EC%B2%B4%ED%8C%90%20%EC%8B%A0%EC%B2%AD">이메일 escssaem@naver.com</a>
+          <a class="btn ghost" href="https://open.kakao.com/me/esc_lab" target="_blank" rel="noopener">카카오톡 오픈프로필로 문의</a>
+        </div>
+        <p class="small" style="margin-bottom:0">학교, 성함, 사용하실 수업(과목·학년)을 적어 주시면 교사 확인 후 <b>학교 배포 묶음</b>(APK + 수업 준비 도구 + 교사용 안내문, 약 52MB) 받는 방법을 안내해 드립니다.
+          교사 확인에 필요한 것 이상의 개인정보는 보내지 않으셔도 됩니다.</p>
+      </div>
+      <p class="small">패키지 이름 <code>com.classroom.biodiversityxr</code> · Android 12L(SDK 32) 이상 · arm64 · Meta Horizon Store에 등록된 앱이 아니어서 개발자 모드로 설치합니다.</p>
+
+      <h2>준비물</h2>
+      <ul>
+        <li>Meta Quest 3 또는 3S, 데이터 전송이 되는 USB-C 케이블(여러 대면 USB 허브)</li>
+        <li>Windows PC(또는 Mac) — 수업 준비 도구는 Python 3로 실행됩니다</li>
+        <li>헤드셋 개발자 모드: 스마트폰 Meta Horizon 앱 → 메뉴 → 기기 → 헤드셋 설정 → 개발자 모드 켜기 (Meta 개발자 조직 등록 필요: <a href="https://developers.meta.com/" rel="noopener">developers.meta.com</a>)</li>
+        <li>adb(헤드셋 연결 도구): <a href="https://developers.meta.com/horizon/downloads/package/oculus-developer-hub-win/" rel="noopener">Meta Quest Developer Hub</a>를 설치하거나, Google의 <a href="https://developer.android.com/tools/releases/platform-tools" rel="noopener">SDK Platform-Tools</a>를 받아 묶음 폴더 안에 <code>platform-tools</code>로 넣습니다</li>
+        <li>(선택) 360 현장 탐방에서 구글 스트리트뷰를 쓰려면 Google Maps API 키 — 준비 도구 안의 'API 키 만드는 방법' 참고</li>
+      </ul>
+
+      <h2>설치 방법</h2>
+      <h3>방법 1. 수업 준비 도구 (여러 대를 한 번에, 권장)</h3>
+      <ol>
+        <li>받으신 묶음 zip을 풀고 <b>수업준비도구-Windows.bat</b>(Mac은 <b>수업준비도구-Mac.command</b>)을 더블클릭하면 브라우저에 준비 페이지가 열립니다.
+          Python이 없으면 안내가 나옵니다(설치 첫 화면에서 "Add python.exe to PATH" 체크).</li>
+        <li>Quest를 USB-C로 연결하고 헤드셋 안의 'USB 디버깅 허용' 창에서 <b>항상 허용</b>을 체크한 뒤 [허용]을 누릅니다.</li>
+        <li>[앱 설치·업데이트] → 연결된 모든 헤드셋에 앱이 설치됩니다.</li>
+        <li>(선택) '추천 장소'에서 [생태계별 대표 5곳 한 번에 추가]를 누르거나 직접 360 사진·스트리트뷰 링크를 넣고 [수업 자료 보내기]를 누릅니다.</li>
+      </ol>
+      <h3>방법 2. Meta Quest Developer Hub에 APK 끌어 놓기 (한 대씩)</h3>
+      <ol>
+        <li>Developer Hub에서 연결된 헤드셋을 고르고, 묶음 안의 APK 파일을 'Apps' 영역으로 끌어 놓습니다.</li>
+        <li>360 현장 탐방 장면을 쓰려면 방법 1의 준비 도구로 수업 자료를 보냅니다.</li>
+      </ol>
+
+      <h2>실행과 수업 팁</h2>
+      <ul>
+        <li>헤드셋 앱 목록 → 오른쪽 위 필터 <b>'알 수 없는 출처'</b> → BiodiversityXR</li>
+        <li>제자리 체험입니다. 조이스틱으로 움직이지 않고 몸을 돌려 둘러봅니다. 정면이 틀어지면 Meta 버튼(또는 왼쪽 ☰)을 길게 눌러 처음 자리로 돌아옵니다.</li>
+        <li>테이블이 높거나 낮으면 패널의 ▲▼로 맞춥니다(앉아서도 체험 가능). '이 구역 다시'로 현재 구역을 처음부터 할 수 있습니다.</li>
+        <li>④ 360 생태계 탐험은 주변 전체가 바뀌니 체험 공간 주변을 비워 두세요.</li>
+        <li>스트리트뷰는 구글 약관상 미리 저장할 수 없어 수업 중 헤드셋이 Wi-Fi에 연결되어 있어야 합니다.</li>
+      </ul>
+
+      <h2>문제가 생기면</h2>
+      <ul>
+        <li>헤드셋이 목록에 안 보임 → 데이터용 케이블인지, 개발자 모드, 'USB 디버깅 허용'을 확인하세요.</li>
+        <li>스트리트뷰가 안 나옴 → 헤드셋 Wi-Fi, API 키, 학교망에서 <code>maps.googleapis.com</code> 차단 여부를 확인하세요.</li>
+        <li>360도 사진이 찌그러짐 → 가로:세로 2:1인 360도(등장방형) 사진인지 확인하세요.</li>
+      </ul>
+
+      <h2>꼭 알아 두세요</h2>
+      <div class="warn">
+        <ul>
+          <li>학교 기기에 개발자 모드·외부 앱 설치가 허용되는지 학교 정책을 먼저 확인하세요.</li>
+          <li>앱에는 로그인·이용 기록 수집이 없습니다. 교사가 스트리트뷰 장소를 넣은 경우에만 헤드셋이 구글 스트리트뷰 이미지를 불러옵니다(Google 약관 적용).</li>
+          <li>교육용으로 만든 개인 제작 앱입니다. 수업 전에 직접 한 번 체험해 보시고, 문제가 있으면 알려 주세요.</li>
+        </ul>
+      </div>
+
+      <h2>이용 조건 · 출처</h2>
+      <p class="small">학교 수업·연수·비영리 교육에 자유롭게 활용할 수 있습니다. 앱이나 그 일부를 복제·수정해 다른 곳에 배포하는 것은 허락하지 않습니다.
+        받으신 파일은 다시 나누지 마시고, 동료 선생님께는 이 페이지 주소를 알려 주세요.<br />
+        3D 생물 모델: Quaternius, Kenney, hat_my_guy, AssetQuest, MiniPoly, Mohabins (모두 CC0) · 글꼴: 나눔고딕(NAVER, SIL OFL 1.1).
+        자세한 목록은 묶음 안의 '외부에셋-출처.md'에 있습니다.</p>
+
+      <footer>© 2026 ESC쌤(양지고) · <a href="../">XR 수업 앱 모음</a></footer>
+    </main>
+  </body>
+</html>
