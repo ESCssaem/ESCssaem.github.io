@@ -56,7 +56,7 @@
       @keyframes spin { to { transform: rotate(360deg); } }
       @media (max-width: 480px) { #overlay { bottom: 8px; left: 8px; padding: 10px 12px; } #overlay p { font-size: 13px; } }
     </style>
-    <script type="module" crossorigin src="./assets/index-Dcw5lT7l.js"></script>
+    <script type="module" crossorigin src="./assets/index-Cez5jAM6.js"></script>
   </head>
   <body>
     <div id="scene-container"></div>
@@ -67,7 +67,7 @@
       <p>식물을 클릭(터치)해 세어 보세요. 화면을 끌면 둘러볼 수 있어요.<br />Quest: 아래 버튼으로 VR에 들어가 컨트롤러 트리거로 고릅니다.</p>
       <button id="vr-button" hidden>VR로 체험하기</button>
       <p id="vr-note">이 브라우저는 VR을 지원하지 않아 화면 모드로 실행 중입니다.</p>
-      <div class="row"><button class="link" id="info-button">앱 정보·만든 사람</button></div>
+      <div class="row"><button class="link" id="info-button">앱 정보·만든 사람</button><a class="link" id="overlay-full" hidden></a></div>
     </div>
     <dialog id="info">
       <h2 id="info-title">종다양성 방형구 조사</h2>
@@ -87,6 +87,7 @@
         <a href="THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener">오픈소스 라이선스 고지</a>
         <span id="info-source"></span>
       </p>
+      <p class="small"><a id="info-full" hidden></a></p>
       <form method="dialog"><button>닫기</button></form>
     </dialog>
   </body>
