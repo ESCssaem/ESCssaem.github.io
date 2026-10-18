@@ -1,6 +1,7 @@
 {
   "schema": "esc-xr-app/1",
   "id": "species-quadrat",
+  "category": "xr",
   "title": "종다양성 방형구 조사",
   "series": "생물다양성 XR",
   "version": "0.4.1",

@@ -1,0 +1,20 @@
+{
+  "schema": "esc-xr-app/1",
+  "id": "galimgil",
+  "kind": "link",
+  "category": "web",
+  "title": "갈림길 — 자율주행 윤리 실험실",
+  "series": "과학 관련 사회적 쟁점(SSI)",
+  "updated": "2026-10-18",
+  "audience": "고등학교 통합과학·통합사회 융합",
+  "topic": "자율주행차의 윤리적 딜레마 8가지로 판단 기준과 정의 탐구",
+  "minutes": 15,
+  "devices": [
+    "PC·휴대폰·태블릿 브라우저"
+  ],
+  "author": "ESC쌤(양지고)",
+  "license": "수업 활용 자유 · 무단 복제·수정 배포 금지",
+  "privacy": "학생은 계정 없이 학급 코드와 번호만 입력하며 이름과 선택 이유는 수집하지 않습니다. 학급의 선택 기록은 담당 교사만 보고, 학급 생성 후 30일이 지나면 자동 삭제됩니다.",
+  "url": "https://ethics-cf.escssaem.workers.dev/",
+  "icon": "images/icon-192.png"
+}

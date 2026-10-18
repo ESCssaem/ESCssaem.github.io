@@ -1,10 +1,11 @@
 {
   "schema": "esc-xr-app/1",
   "id": "biodiversity-xr",
+  "category": "xr",
   "kind": "apk",
   "title": "생물다양성 XR 탐험 (Quest 앱 전체판)",
   "series": "생물다양성 XR",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "updated": "2026-10-18",
   "audience": "고등학교 1학년 통합과학",
   "topic": "생물다양성의 세 수준 — 유전적 다양성·종다양성·생태계다양성",

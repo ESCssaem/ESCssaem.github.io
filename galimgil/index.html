@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>갈림길 · 자율주행 윤리 실험실</title>
+    <meta name="description" content="자율주행차의 8가지 윤리적 딜레마를 선택하며 판단의 기준과 정의를 탐구하는 통합과학·통합사회 융합 수업 웹앱" />
+    <meta name="theme-color" content="#141f29" />
+    <link rel="icon" type="image/png" href="images/icon-192.png" />
+    <style>
+      :root { --bg: #f3f6f4; --card: #ffffff; --ink: #1d2a24; --dim: #5d6b64; --accent: #2e7a5a; --accent-ink: #ffffff; --line: #dfe6e2; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #141f29; --card: #1d2a35; --ink: #eef3f1; --dim: #a9b8b2; --accent: #5cd19e; --accent-ink: #0f1a14; --line: #2c3b47; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.65;
+        font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+      main { max-width: 880px; margin: 0 auto; padding: 32px 16px 64px; }
+      a { color: var(--accent); }
+      .crumb { font-size: 13px; }
+      h1 { margin: 8px 0 4px; font-size: 26px; line-height: 1.3; }
+      h2 { margin: 36px 0 10px; font-size: 19px; }
+      .lead { margin: 0 0 18px; color: var(--dim); }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+      .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
+      .shots figure { margin: 0; }
+      .shots img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
+      .shots figcaption { font-size: 12px; color: var(--dim); margin-top: 4px; }
+      .btn { display: inline-block; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: var(--accent-ink);
+        font-weight: 700; text-decoration: none; text-align: center; }
+      .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+      .row { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; }
+      .small { font-size: 13px; color: var(--dim); }
+      ul { padding-left: 22px; margin: 6px 0; }
+      li { margin: 3px 0; }
+      footer { margin-top: 44px; font-size: 12px; color: var(--dim); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="crumb"><a href="../">← ESC쌤의 수업 앱</a></div>
+      <h1>갈림길 — 자율주행 윤리 실험실</h1>
+      <p class="lead">자율주행차의 8가지 윤리적 딜레마를 선택하며 판단의 기준과 정의를 탐구하는 통합과학·통합사회 융합 활동 웹앱입니다.
+        과학 관련 사회적 쟁점(SSI)과 과학 윤리 단원을 마무리하며, ‘기술적으로 가능한가’와 ‘사회적으로 받아들일 수 있는가’를 구분해 생각해 보도록 만들었습니다.</p>
+      <div class="row">
+        <a class="btn" href="https://ethics-cf.escssaem.workers.dev/" rel="noopener">바로 사용하기 →</a>
+        <span class="small" style="align-self:center">PC·휴대폰·태블릿 브라우저 · 설치·로그인 없음 · 약 10~15분</span>
+      </div>
+
+      <div class="shots">
+        <figure><img src="images/01-entry.jpg" alt="갈림길 첫 화면: 학급 참여 코드와 학생 번호 입력" loading="lazy" />
+          <figcaption>첫 화면 — 계정 없이 학급 코드와 번호만 입력</figcaption></figure>
+        <figure><img src="images/02-dilemma.jpg" alt="딜레마 화면: 두 선택지의 예상 피해와 보호 대상 비교" loading="lazy" />
+          <figcaption>딜레마 — 두 선택지를 비교하고 A·B 중 하나를 확정</figcaption></figure>
+        <figure><img src="images/03-student-result.jpg" alt="학생 결과 화면: 선택과 연결된 가치와 상황 비교" loading="lazy" />
+          <figcaption>결과 — 점수·유형 판정 대신 가치와 상황 비교</figcaption></figure>
+        <figure><img src="images/04-justice.jpg" alt="통합사회 정의론으로 다시 보기 화면" loading="lazy" />
+          <figcaption>통합사회 정의론과 이어 보기</figcaption></figure>
+      </div>
+      <p class="small">화면 속 학급·번호·선택 기록은 소개용 합성 예시입니다.</p>
+
+      <h2>어떤 활동인가요?</h2>
+      <div class="card">
+        <ul>
+          <li>학생은 자율주행차가 피할 수 없는 선택을 해야 하는 가상 상황 8개에서, 자동차가 어떻게 판단하도록 설계할지 A와 B 중 하나를 고릅니다.</li>
+          <li>교사는 ‘도심 주행(생명 보호와 교통규칙)’과 ‘돌발 상황(불확실성과 책임)’ 두 세트 중 하나를 골라 학급을 엽니다.</li>
+          <li>결과 화면은 윤리 점수나 성향 유형을 판정하지 않습니다. 이번 선택과 연결해 볼 수 있는 가치(피해 최소화, 규칙 준수, 탑승자 보호 등)와, 조건이 다른 두 상황에서 무엇을 우선했는지를 나란히 보여 줍니다.</li>
+          <li>이어서 통합사회 정의 단원과 연결해 공정한 위험 배분, 개인의 권리와 공동선, 롤스의 무지의 베일을 다룹니다. 어느 정의관도 A나 B를 정답으로 정해 주지 않습니다.</li>
+          <li>교사는 학급의 상황별 선택 분포와 학생별 기록을 보고 토론으로 이어 갈 수 있습니다.</li>
+        </ul>
+      </div>
+
+      <h2>수업에서 지키는 약속</h2>
+      <div class="card">
+        <ul>
+          <li>다른 사람의 선택을 비난하거나 인격을 평가하지 않습니다. 다만 ‘왜 그렇게 판단했는지’ 근거는 서로 묻고 검토할 수 있습니다.</li>
+          <li>문항은 수업을 위해 만든 가상 사고실험이며, 실제 자동차의 충돌 판단 알고리즘을 재현하지 않습니다.</li>
+        </ul>
+      </div>
+
+      <h2>이용 안내</h2>
+      <div class="card">
+        <ul>
+          <li><b>학생</b>: 선생님이 알려 준 학급 코드와 번호로 바로 참여합니다. 이름과 선택 이유는 수집하지 않습니다.</li>
+          <li><b>교사</b>: 학급을 여는 데 필요한 교사용 사용법과 학급 개설 암호는 교사 확인 후 따로 안내해 드립니다. 아래로 문의해 주세요.</li>
+          <li><b>기록 보관</b>: 학급의 선택 기록은 담당 교사만 볼 수 있고, 학급 생성 후 30일이 지나면 자동 삭제됩니다.</li>
+        </ul>
+        <div class="row">
+          <a class="btn ghost" href="mailto:escssaem@naver.com?subject=%5B%EA%B0%88%EB%A6%BC%EA%B8%B8%5D%20%EA%B5%90%EC%82%AC%EC%9A%A9%20%EC%95%88%EB%82%B4%20%EC%9A%94%EC%B2%AD">이메일 escssaem@naver.com</a>
+          <a class="btn ghost" href="https://open.kakao.com/me/esc_lab" rel="noopener">카카오톡으로 문의</a>
+        </div>
+      </div>
+
+      <footer>
+        학교 수업·연수·비영리 교육에서 이 주소로 자유롭게 쓸 수 있습니다. 앱이나 그 일부를 복제·수정해 다른 곳에 배포하거나 상업적으로 이용하려면 제작자의 사전 허락이 필요합니다.<br />
+        © 2026 ESC쌤(양지고)
+      </footer>
+    </main>
+  </body>
+</html>
