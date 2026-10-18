@@ -104,9 +104,11 @@
         card.append(img, body);
         return card;
       }
-      fetch('apps.json')
-        .then((r) => r.json())
-        .then((slugs) => Promise.all(slugs.map((s) => fetch(`${s}/app.json`).then((r) => r.json()).then((a) => ({ s, a })))))
+      // GitHub Pages는 파일을 10분 동안 브라우저에 저장해 두게 해서, 목록이 바뀌어도 예전 목록이 보일 수 있다.
+      // 목록과 앱 정보는 작으니 매번 서버에 새 버전이 있는지 확인한다.
+      const fresh = (u) => fetch(u, { cache: 'no-cache' }).then((r) => r.json());
+      fresh('apps.json')
+        .then((slugs) => Promise.all(slugs.map((s) => fresh(`${s}/app.json`).then((a) => ({ s, a })))))
         .then((apps) => {
           for (const g of Object.values(grids)) g.textContent = '';
           for (const { s, a } of apps) (grids[a.category] || grids.xr).append(makeCard(s, a));
