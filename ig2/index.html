@@ -64,7 +64,7 @@
         </div>
         <label class="remember"><input type="checkbox" id="remember" /> 이 기기에서 코드 기억하기(개인 기기만)</label>
         <p class="msg" id="msg" role="status"></p>
-        <p class="note">교사용 코드와 학생용 코드가 다릅니다. 코드는 담당 선생님께 받으세요.</p>
+        <p class="note">교사용·동교과 선생님용·학생용 코드가 각각 다릅니다. 코드는 담당 선생님께 받으세요.</p>
       </form>
 
       <section id="toc" hidden>
@@ -95,7 +95,7 @@
       const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
 
       function renderToc(v, ready) {
-        $("#ed").textContent = v.ed === "teacher" ? "교사용 · 발표 노트·지도서·정답 표시본 포함" : "학생용";
+        $("#ed").textContent = { teacher: "교사용 · 발표 노트·지도서·정답 표시본 포함", colleague: "동교과 교사용(열람 전용) · 발표 노트·지도서·정답 표시본 포함", student: "학생용" }[v.ed] || v.ed;
         const box = $("#units"); box.textContent = "";
         for (const u of UNITS) {
           const big = el("section", "big"), h = el("h2");
