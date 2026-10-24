@@ -1,0 +1,15 @@
+{
+  "schema": "esc-xr-app/1",
+  "id": "ig2",
+  "kind": "lesson",
+  "category": "lesson",
+  "title": "통합과학2 수업 자료",
+  "series": "교과목 수업 자료",
+  "updated": "2026-10-24",
+  "audience": "고1 통합과학2",
+  "topic": "단원별 수업 슬라이드(판서·원본 보기 포함) · 교사용/학생용 접속 코드 필요",
+  "devices": ["PC·태블릿·휴대폰 브라우저"],
+  "author": "ESC쌤(양지고)",
+  "license": "수업용으로만 사용 · 복제·배포 금지",
+  "icon": "icon.svg"
+}
