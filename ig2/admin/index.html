@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <!-- GitHub Pages는 응답 헤더를 못 바꾸므로 meta CSP만 둔다. frame-ancestors는 meta로 적용되지 않아 admin-v2.js가 직접 확인한다. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://science-educator-card.escssaem.chatgpt.site https://api.github.com; img-src 'self' data:; base-uri 'none'; form-action 'none'" />
+    <title>통합과학2 접속 코드 관리</title>
+    <meta name="theme-color" content="#141f29" />
+    <style>
+      :root { --bg: #f3f6f4; --card: #ffffff; --ink: #1d2a24; --dim: #5d6b64; --accent: #2e7a5a; --line: #dfe6e2; --warn: #b4542c; --soft: #e7f1ec; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #141f29; --card: #1d2a35; --ink: #eef3f1; --dim: #a9b8b2; --accent: #5cd19e; --line: #2c3b47; --warn: #f0a07a; --soft: #22362f; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+      main { max-width: 720px; margin: 0 auto; padding: 40px 16px 64px; }
+      .crumb { font-size: 13px; color: var(--dim); margin-bottom: 10px; }
+      .crumb a, a { color: var(--accent); }
+      h1 { margin: 0 0 18px; font-size: 24px; }
+      h2 { margin: 14px 0 8px; font-size: 16px; }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+      .card.warn { border-color: var(--warn); }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+      input[type=password], input[type=text] { flex: 1; min-width: 0; width: 100%; font: inherit; font-size: 15px; padding: 9px 11px; border-radius: 9px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+      button { font: inherit; font-weight: 700; padding: 9px 15px; border-radius: 10px; border: 0; background: var(--accent); color: #fff; cursor: pointer; }
+      button:disabled { opacity: .6; cursor: not-allowed; }
+      button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+      .coderow { display: grid; grid-template-columns: 7.5em minmax(0, 1fr) auto auto; gap: 8px; align-items: center; margin-bottom: 8px; }
+      .coderow label { font-weight: 700; font-size: 14px; }
+      @media (max-width: 520px) { .coderow { grid-template-columns: 1fr auto auto; } .coderow label { grid-column: 1 / -1; } }
+      .msg { min-height: 1.4em; margin: 12px 0 0; font-size: 14px; color: var(--warn); white-space: pre-wrap; }
+      .note { font-size: 13px; color: var(--dim); line-height: 1.6; }
+      footer { margin-top: 36px; font-size: 12px; color: var(--dim); line-height: 1.7; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="crumb"><a href="../">통합과학2 수업 자료</a> › 접속 코드 관리</div>
+      <div id="app"><noscript>이 화면은 JavaScript가 필요합니다.</noscript></div>
+      <footer>코드·토큰·복구 키는 이 창의 메모리에만 있고, 로그아웃하거나 창을 닫으면 사라집니다. 공용 기기에서는 쓰지 마세요.</footer>
+    </main>
+    <script src="../admin-v2.js"></script>
+  </body>
+</html>
