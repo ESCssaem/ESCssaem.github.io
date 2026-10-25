@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>통합과학1 수업 자료</title>
+    <meta name="theme-color" content="#141f29" />
+    <style>
+      :root { --bg: #f3f6f4; --card: #ffffff; --ink: #1d2a24; --dim: #5d6b64; --accent: #2e7a5a; --line: #dfe6e2; --warn: #b4542c; --soft: #e7f1ec; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #141f29; --card: #1d2a35; --ink: #eef3f1; --dim: #a9b8b2; --accent: #5cd19e; --line: #2c3b47; --warn: #f0a07a; --soft: #22362f; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink);
+        font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+      main { max-width: 880px; margin: 0 auto; padding: 40px 16px 64px; }
+      .crumb { font-size: 13px; color: var(--dim); margin-bottom: 10px; }
+      .crumb a { color: var(--accent); text-decoration: none; }
+      h1 { margin: 0 0 6px; font-size: 26px; }
+      .lead { margin: 0 0 24px; color: var(--dim); line-height: 1.6; }
+      .gate { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; max-width: 460px; }
+      .gate label { display: block; font-weight: 700; margin-bottom: 8px; }
+      .row { display: flex; gap: 8px; }
+      .gate input[type=password] { flex: 1; min-width: 0; font: inherit; font-size: 17px; padding: 10px 12px; border-radius: 10px;
+        border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+      button { font: inherit; font-weight: 700; padding: 10px 16px; border-radius: 10px; border: 0; background: var(--accent); color: #fff; cursor: pointer; }
+      button:disabled { opacity: .6; cursor: wait; }
+      .remember { display: flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 13px; color: var(--dim); }
+      .msg { min-height: 1.4em; margin: 10px 0 0; font-size: 14px; color: var(--warn); }
+      .note { margin-top: 14px; font-size: 12px; color: var(--dim); line-height: 1.6; }
+      .bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+      .ed { font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); }
+      .bar .lock { background: transparent; color: var(--dim); border: 1px solid var(--line); padding: 5px 12px; font-size: 13px; }
+      .big { margin: 0 0 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+      .big > h2 { margin: 0; padding: 14px 18px; font-size: 18px; background: var(--soft); }
+      .big > h2 span { color: var(--accent); margin-right: 8px; }
+      .mid { padding: 6px 18px 12px; border-top: 1px solid var(--line); }
+      .big > h2 + .mid { border-top: 0; }
+      .mid h3 { margin: 10px 0 6px; font-size: 15px; color: var(--dim); }
+      .mid ol { list-style: none; margin: 0; padding: 0; }
+      .mid li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px dashed var(--line); font-size: 15px; }
+      .mid li:first-child { border-top: 0; }
+      .num { font-variant-numeric: tabular-nums; color: var(--dim); width: 2.2em; flex: none; }
+      .mid li a { color: var(--ink); font-weight: 700; text-decoration: none; }
+      .mid li a:hover { color: var(--accent); }
+      .go { margin-left: auto; font-size: 13px; color: var(--accent); font-weight: 700; white-space: nowrap; }
+      .soon { margin-left: auto; font-size: 12px; color: var(--dim); white-space: nowrap; }
+      .mid li.off { color: var(--dim); }
+      .admin { margin-top: 26px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+      .admin h2 { margin: 0 0 12px; font-size: 18px; }
+      .admin h2 small { font-size: 12px; font-weight: 400; color: var(--dim); margin-left: 6px; }
+      .coderow { display: grid; grid-template-columns: 7.5em minmax(0, 1fr) auto auto; gap: 8px; align-items: center; margin-bottom: 8px; }
+      .coderow label { font-weight: 700; font-size: 14px; }
+      .admin input[type=password], .admin input[type=text] { min-width: 0; width: 100%; font: inherit; font-size: 15px; padding: 8px 10px; border-radius: 8px;
+        border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+      .admin .tok { display: block; margin-top: 14px; font-weight: 700; font-size: 14px; }
+      .admin .tok small { font-weight: 400; color: var(--dim); }
+      .admin .tok a { color: var(--accent); }
+      .admin .tok input { margin-top: 6px; }
+      .admin .row { margin-top: 12px; flex-wrap: wrap; }
+      button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); padding: 7px 12px; font-size: 13px; }
+      @media (max-width: 520px) { .coderow { grid-template-columns: 1fr auto auto; } .coderow label { grid-column: 1 / -1; } }
+      footer { margin-top: 36px; font-size: 12px; color: var(--dim); line-height: 1.7; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="crumb"><a href="../">ESC쌤의 수업 앱</a> › 교과목 수업 자료</div>
+      <h1>통합과학1 수업 자료</h1>
+      <p class="lead">고등학교 1학년 통합과학1 수업 슬라이드입니다. 교과서·지도서·부교재 원본이 들어 있어 접속 코드가 있는 사람만 볼 수 있습니다.</p>
+
+      <form class="gate" id="gate" hidden>
+        <label for="code">접속 코드</label>
+        <div class="row">
+          <input type="password" id="code" autocomplete="off" autocapitalize="off" spellcheck="false" required />
+          <button id="enter">입장</button>
+        </div>
+        <label class="remember"><input type="checkbox" id="remember" /> 이 기기에서 코드 기억하기(개인 기기만)</label>
+        <p class="msg" id="msg" role="status"></p>
+        <p class="note">교사용·동교과 선생님용·학생용 코드가 각각 다릅니다. 코드는 담당 선생님께 받으세요.</p>
+      </form>
+
+      <section id="toc" hidden>
+        <div class="bar"><span class="ed" id="ed"></span><button class="lock" id="lock" type="button">잠그기</button></div>
+        <div id="units"></div>
+        <div id="admin"></div>
+      </section>
+
+      <footer>
+        수업 자료와 원본(교과서·지도서·부교재)은 수업용으로만 쓰고 다른 곳에 옮기거나 배포하지 마세요.<br />
+        © 2026 ESC쌤(양지고)
+      </footer>
+    </main>
+    <script src="gate.js"></script>
+    <script src="admin.js"></script>
+    <script>
+      // 2022 개정 통합과학1(비상교육) 교과서 차례. id가 keys.json의 lessons에 있으면 자료가 올라와 있는 것이다.
+      const UNITS = [
+        { n: "Ⅰ", t: "과학의 기초", mids: [
+          { n: "1", t: "과학의 기본량", subs: [["I-1-01", "자연 세계의 시간과 공간"], ["I-1-02", "기본량과 단위"]] },
+          { n: "2", t: "과학의 측정과 우리 사회", subs: [["I-2-01", "과학적 측정 표준의 유용성"], ["I-2-02", "자연의 변화 측정과 현대 문명"]] } ] },
+        { n: "Ⅱ", t: "물질과 규칙성", mids: [
+          { n: "1", t: "자연의 구성 원소", subs: [["II-1-01", "우주의 시작과 원소의 생성"], ["II-1-02", "지구와 생명체를 구성하는 원소의 생성"]] },
+          { n: "2", t: "물질의 규칙성과 성질", subs: [["II-2-01", "원소의 주기성과 화학 결합"], ["II-2-02", "화학 결합과 물질의 성질"], ["II-2-03", "지각과 생명체 구성 물질의 규칙성"], ["II-2-04", "물질의 전기적 성질"]] } ] },
+        { n: "Ⅲ", t: "시스템과 상호작용", mids: [
+          { n: "1", t: "지구시스템", subs: [["III-1-01", "지구시스템의 구성과 상호작용"], ["III-1-02", "지권의 변화와 영향"]] },
+          { n: "2", t: "역학 시스템", subs: [["III-2-01", "중력을 받는 물체의 운동"], ["III-2-02", "운동과 충돌"]] },
+          { n: "3", t: "생명 시스템", subs: [["III-3-01", "생명 시스템과 화학 반응"], ["III-3-02", "생명 시스템에서 정보의 흐름"]] } ] },
+      ];
+      const $ = (s) => document.querySelector(s);
+      const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+
+      function renderToc(v, ready) {
+        $("#ed").textContent = { teacher: "교사용 · 발표 노트·지도서·정답 표시본 포함", colleague: "동교과 교사용(열람 전용) · 발표 노트·지도서·정답 표시본 포함", student: "학생용" }[v.ed] || v.ed;
+        const box = $("#units"); box.textContent = "";
+        for (const u of UNITS) {
+          const big = el("section", "big"), h = el("h2");
+          h.append(el("span", "", u.n + "."), u.t); big.append(h);
+          for (const m of u.mids) {
+            const mid = el("div", "mid"), ol = el("ol");
+            mid.append(el("h3", "", m.n + ". " + m.t));
+            m.subs.forEach(([id, t], i) => {
+              const li = el("li"); li.append(el("span", "num", "0" + (i + 1)));
+              if (ready.includes(id)) {
+                const a = el("a", "", t); a.href = "view.html?l=" + id;
+                const go = el("a", "go", "열기 →"); go.href = a.href;
+                li.append(a, go);
+              } else { li.className = "off"; li.append(el("span", "", t), el("span", "soon", "준비 중")); }
+              ol.append(li);
+            });
+            mid.append(ol); big.append(mid);
+          }
+          box.append(big);
+        }
+        $("#gate").hidden = true; $("#toc").hidden = false;
+        mountAdmin(v, $("#admin"));
+      }
+
+      async function show() {
+        const v = savedKey();
+        if (!v) { $("#admin").textContent = ""; $("#toc").hidden = true; $("#gate").hidden = false; $("#code").focus(); return; }
+        let ready = [];
+        try { ready = (await (await fresh("keys.json")).json()).lessons; } catch (_) {}
+        renderToc(v, ready);
+      }
+
+      $("#gate").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const btn = $("#enter"); btn.disabled = true; $("#msg").textContent = "확인하는 중…";
+        try {
+          const v = await unlock($("#code").value);
+          if (!v) { $("#msg").textContent = "코드가 맞지 않습니다."; return; }
+          saveKey(v, $("#remember").checked); $("#code").value = ""; $("#msg").textContent = "";
+          const next = new URLSearchParams(location.search).get("next");
+          if (next && /^[IV]+-\d-\d\d$/.test(next)) location.href = "view.html?l=" + next; else show();
+        } catch (err) {
+          $("#msg").textContent = "확인하지 못했습니다. 최신 브라우저(크롬·사파리·엣지)로 열어 주세요.";
+        } finally { btn.disabled = false; }
+      });
+      $("#lock").addEventListener("click", () => { forgetKey(); show(); });
+      show();
+    </script>
+  </body>
+</html>
