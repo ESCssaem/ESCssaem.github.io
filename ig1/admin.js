@@ -2,9 +2,12 @@
 // keys.json의 admin 칸은 교사판 열쇠로 잠근 {codes, keys}다. 교사 코드로 입장한 사람만 현재 코드를 보고,
 // 바꾸면 이 브라우저에서 새 keys.json(새 코드로 각 판 열쇠를 다시 잠금)을 만들어 GitHub API로 저장소에 올린다.
 // 수업 자료(d/*.bin)는 판 열쇠가 그대로라 다시 만들 필요가 없다.
+// 관리 v2(keys.json의 adminV >= 2)로 옮긴 뒤에는 admin 칸이 관리자 루트 키(AR)로 잠겨 있어 여기서는 열지 않고 관리 화면(admin/)으로 안내한다.
+// GitHub 토큰은 이 기기에 저장하지 않는다(예전에 저장해 둔 토큰은 열 때 지운다).
 const REPO = "ESCssaem/ESCssaem.github.io", KEYS_PATH = "ig1/keys.json", TOKEN_KEY = "esc-ig1-gh";
 const EDS = [["teacher", "관리자 교사판"], ["colleague", "동교과 교사판"], ["student", "학생판"]];
 const b64 = (u8) => { let s = ""; for (let j = 0; j < u8.length; j += 0x8000) s += String.fromCharCode(...u8.subarray(j, j + 0x8000)); return btoa(s); };
+const isV2 = (K) => !!K && Number.isInteger(K.adminV) && K.adminV >= 2;
 
 async function sealB64(key, text) {
   const iv = crypto.getRandomValues(new Uint8Array(12));
@@ -14,7 +17,7 @@ async function sealB64(key, text) {
 
 // 관리자 교사판 열쇠로 관리 정보 열기 → {codes, keys} (없거나 못 열면 null)
 async function readAdmin(v, K) {
-  if (!K.admin || v.ed !== "teacher") return null;
+  if (!K.admin || v.ed !== "teacher" || isV2(K)) return null;
   try {
     const key = await crypto.subtle.importKey("raw", unb64(v.k), "AES-GCM", false, ["decrypt"]);
     return JSON.parse(new TextDecoder().decode(await openSealed(key, unb64(K.admin))));
@@ -47,6 +50,10 @@ async function gh(token, method, url, body) {
 
 async function commitKeys(token, json) {
   const cur = await gh(token, "GET", KEYS_PATH + "?ref=main");
+  // 그 사이 관리 v2로 옮겨졌으면 옛 형식으로 덮어쓰지 않는다.
+  let remote = null;
+  try { remote = JSON.parse(new TextDecoder().decode(unb64(String(cur.content).replace(/\s+/g, "")))); } catch (_) {}
+  if (!remote || isV2(remote)) throw new Error("관리 방식이 바뀌었거나 저장소의 keys.json을 읽지 못했습니다. 새 관리 화면(admin/)을 써 주세요");
   const content = b64(new TextEncoder().encode(JSON.stringify(json) + "\n"));
   await gh(token, "PUT", KEYS_PATH, { message: "통합과학1 수업 자료 접속 코드 변경(관리자 교사판)", content, sha: cur.sha, branch: "main" });
 }
@@ -62,7 +69,12 @@ function checkCodes(codes) {
 // 목차 아래 관리 화면
 async function mountAdmin(v, box) {
   box.textContent = "";
+  try { localStorage.removeItem(TOKEN_KEY); } catch (_) {}
   let K; try { K = await (await fresh("keys.json")).json(); } catch (_) { return; }
+  if (isV2(K)) {
+    if (v.ed === "teacher") box.innerHTML = '<section class="admin"><h2>접속 코드 관리</h2><p class="note">접속 코드 관리는 새 관리 화면에서 합니다. <a href="admin/">관리 화면 열기</a></p></section>';
+    return;
+  }
   const admin = await readAdmin(v, K);
   if (!admin) {
     if (v.ed === "teacher") box.innerHTML = '<section class="admin"><h2>접속 코드 관리</h2><p class="note">관리 정보를 열지 못했습니다. 잠그기 후 교사 코드로 다시 입장해 주세요.</p></section>';
@@ -71,9 +83,8 @@ async function mountAdmin(v, box) {
   const sec = document.createElement("section"); sec.className = "admin";
   sec.innerHTML = '<h2>접속 코드 관리 <small>관리자 교사판에서만 보입니다</small></h2>' +
     '<div class="codes"></div>' +
-    '<label class="tok">GitHub 토큰 <small>저장할 때만 필요 · <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">토큰 만들기</a>(저장소 ESCssaem.github.io만, Contents: Read and write)</small>' +
+    '<label class="tok">GitHub 토큰 <small>저장할 때만 필요 · 이 기기에 저장하지 않습니다 · <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">토큰 만들기</a>(저장소 ESCssaem.github.io만, Contents: Read and write)</small>' +
     '<input type="password" id="gh-token" autocomplete="off" spellcheck="false" placeholder="github_pat_…"></label>' +
-    '<label class="remember"><input type="checkbox" id="gh-remember"> 이 기기에 토큰 기억하기(개인 기기만)</label>' +
     '<div class="row"><button type="button" id="codes-save">바꾼 코드 저장</button><button type="button" class="ghost" id="codes-undo">처음 값으로</button></div>' +
     '<p class="msg" id="codes-msg" role="status"></p>' +
     '<p class="note">저장하면 1~2분 뒤부터 새 코드로만 입장할 수 있습니다. 이미 입장해 있거나 코드를 기억해 둔 기기는 계속 열립니다(모두 막으려면 Claude에게 열쇠 교체를 요청).<br>관리자 교사판 코드를 바꾸면 새 코드를 꼭 따로 적어 두세요.</p>';
@@ -91,8 +102,7 @@ async function mountAdmin(v, box) {
     row.append(lab, inp, eye, copy); list.append(row); inputs[ed] = inp;
   }
   box.append(sec);
-  const tok = sec.querySelector("#gh-token"), rem = sec.querySelector("#gh-remember"), msg = sec.querySelector("#codes-msg"), save = sec.querySelector("#codes-save");
-  try { const t = localStorage.getItem(TOKEN_KEY); if (t) { tok.value = t; rem.checked = true; } } catch (_) {}
+  const tok = sec.querySelector("#gh-token"), msg = sec.querySelector("#codes-msg"), save = sec.querySelector("#codes-save");
   sec.querySelector("#codes-undo").onclick = () => { for (const [ed] of EDS) inputs[ed].value = admin.codes[ed] || ""; msg.textContent = ""; };
   save.onclick = async () => {
     const codes = Object.fromEntries(EDS.map(([ed]) => [ed, inputs[ed].value.trim()]));
@@ -102,11 +112,11 @@ async function mountAdmin(v, box) {
     save.disabled = true; msg.textContent = "새 코드로 잠그는 중…";
     try {
       const fresh_ = await (await fresh("keys.json")).json();
+      if (isV2(fresh_)) throw new Error("관리 방식이 바뀌었습니다. 새 관리 화면(admin/)에서 바꿔 주세요");
       const next = await makeKeys(fresh_, admin, codes);
       msg.textContent = "GitHub에 저장하는 중…";
       await commitKeys(token, next);
-      try { if (rem.checked) localStorage.setItem(TOKEN_KEY, token); else localStorage.removeItem(TOKEN_KEY); } catch (_) {}
-      admin.codes = codes;
+      admin.codes = codes; tok.value = "";
       msg.textContent = "저장했습니다. 1~2분 뒤부터 새 코드가 적용됩니다.";
     } catch (e) {
       msg.textContent = "저장하지 못했습니다: " + (e && e.message || e);
