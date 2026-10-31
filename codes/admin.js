@@ -241,9 +241,12 @@
         const r = await fetch(s.api + "/stats", { headers: { Authorization: "Bearer " + s.token }, cache: "no-store" });
         if (!r.ok) throw new Error("카운터 응답 " + r.status);
         const d = await r.json();
-        let names = {};
-        try { const list = await fresh("../apps.json"); await Promise.all(list.map(async (a) => { try { names[a] = (await fresh("../" + a + "/app.json")).title; } catch (_) {} })); } catch (_) {}
-        names.home = "첫 화면"; names.card = "디지털 명함";
+        // 아직 기록이 없는 앱도 0으로 보여 준다(첫 화면 → 앱 목록 순서 → 명함)
+        let names = {}, order = ["home"];
+        try { const list = await fresh("../apps.json"); order.push(...list); await Promise.all(list.map(async (a) => { try { names[a] = (await fresh("../" + a + "/app.json")).title; } catch (_) {} })); } catch (_) {}
+        names.home = "첫 화면"; names.card = "디지털 명함"; order.push("card");
+        const got = Object.fromEntries(d.apps.map((a) => [a.app, a]));
+        d.apps = [...order.map((app) => got[app] || { app }), ...d.apps.filter((a) => !order.includes(a.app))];
         const cols = [["today", "오늘"], ["week", "7일"], ["month", "30일"], ["total", "전체"]];
         const sum = { app: "합계" };
         for (const [k] of cols) for (const t of ["visitors", "views"]) sum[k + "_" + t] = d.apps.reduce((n, a) => n + (a[k + "_" + t] || 0), 0);
@@ -252,7 +255,7 @@
         body.replaceChildren(el("div", { class: "stats" }, el("table", {},
           el("thead", {}, el("tr", {}, el("th", { text: "앱" }), ...cols.map(([, t]) => el("th", { text: t })))),
           el("tbody", {}, ...d.apps.map((a) => row(a, names[a.app] || a.app)), row(sum, "합계", true)))),
-          el("p", { class: "note", text: `칸마다 방문자 / 열람 · 기준일 ${d.today}` + (d.apps.length ? ` · 집계 시작 ${d.apps.map((a) => a.since).sort()[0]}` : " · 아직 기록 없음") }));
+          el("p", { class: "note", text: `칸마다 방문자 / 열람 · 기준일 ${d.today}` + (d.apps.some((a) => a.since) ? ` · 집계 시작 ${d.apps.map((a) => a.since).filter(Boolean).sort()[0]}` : " · 아직 기록 없음") }));
       } catch (err) { body.replaceChildren(el("p", { class: "msg", text: "불러오지 못했습니다: " + (err && err.message || err) })); }
       finally { refresh.disabled = false; }
     }
