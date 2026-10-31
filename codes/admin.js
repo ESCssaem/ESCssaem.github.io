@@ -224,8 +224,45 @@
         el("a", { href: "https://github.com/settings/personal-access-tokens/new", target: "_blank", rel: "noopener", text: "토큰 만들기 →" })));
   }
 
+  // ── 방문자 카운터(escssaem-counter Worker) ──
+  const NUM = (n) => Number(n || 0).toLocaleString("ko-KR");
+  function statsCard() {
+    const id = st.vault.order.find((x) => st.vault.items[x].kind === "stats");
+    const card = el("section", { class: "card" }, el("h2", { text: "방문자" }));
+    if (!id) { card.append(el("p", { class: "note", text: "카운터가 아직 연결되지 않았습니다." })); return card; }
+    const body = el("div", {}, el("p", { class: "note", text: "불러오는 중…" }));
+    const refresh = el("button", { type: "button", class: "ghost", on: { click: () => load() } }, "새로 고침");
+    card.append(body, el("div", { class: "row", style: "margin-top:8px" }, refresh),
+      el("p", { class: "note", text: "방문자: 그날 처음 연 브라우저 수(같은 기기·브라우저가 하루에 여러 번 열어도 1). 열람: 페이지를 연 횟수. 날짜는 한국 시간, IP 등 개인 정보는 저장하지 않습니다." }));
+    async function load() {
+      refresh.disabled = true;
+      try {
+        const s = st.secrets[id];
+        const r = await fetch(s.api + "/stats", { headers: { Authorization: "Bearer " + s.token }, cache: "no-store" });
+        if (!r.ok) throw new Error("카운터 응답 " + r.status);
+        const d = await r.json();
+        let names = {};
+        try { const list = await fresh("../apps.json"); await Promise.all(list.map(async (a) => { try { names[a] = (await fresh("../" + a + "/app.json")).title; } catch (_) {} })); } catch (_) {}
+        names.home = "첫 화면";
+        const cols = [["today", "오늘"], ["week", "7일"], ["month", "30일"], ["total", "전체"]];
+        const sum = { app: "합계" };
+        for (const [k] of cols) for (const t of ["visitors", "views"]) sum[k + "_" + t] = d.apps.reduce((n, a) => n + (a[k + "_" + t] || 0), 0);
+        const cell = (a, k) => el("td", {}, el("b", { text: NUM(a[k + "_visitors"]) }), el("small", { text: " / " + NUM(a[k + "_views"]) }));
+        const row = (a, label, strong) => el("tr", strong ? { class: "sum" } : {}, el("th", { text: label }), ...cols.map(([k]) => cell(a, k)));
+        body.replaceChildren(el("div", { class: "stats" }, el("table", {},
+          el("thead", {}, el("tr", {}, el("th", { text: "앱" }), ...cols.map(([, t]) => el("th", { text: t })))),
+          el("tbody", {}, ...d.apps.map((a) => row(a, names[a.app] || a.app)), row(sum, "합계", true)))),
+          el("p", { class: "note", text: `칸마다 방문자 / 열람 · 기준일 ${d.today}` + (d.apps.length ? ` · 집계 시작 ${d.apps.map((a) => a.since).sort()[0]}` : " · 아직 기록 없음") }));
+      } catch (err) { body.replaceChildren(el("p", { class: "msg", text: "불러오지 못했습니다: " + (err && err.message || err) })); }
+      finally { refresh.disabled = false; }
+    }
+    load();
+    return card;
+  }
+
   function renderMain() {
-    app.replaceChildren(tokenCard(), ...st.vault.order.map(itemCard), adminCard());
+    const items = st.vault.order.filter((id) => st.vault.items[id].kind !== "stats");
+    app.replaceChildren(tokenCard(), statsCard(), ...items.map(itemCard), adminCard());
   }
 
   renderLock();

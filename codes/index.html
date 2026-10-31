@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="referrer" content="no-referrer" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://api.github.com; img-src 'self' data:; base-uri 'none'; form-action 'none'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://api.github.com https://escssaem-counter.escssaem.workers.dev; img-src 'self' data:; base-uri 'none'; form-action 'none'" />
     <title>접속 코드 관리</title>
     <meta name="theme-color" content="#141f29" />
     <style>
@@ -41,8 +41,14 @@
       .msg { min-height: 1.4em; margin: 10px 0 0; font-size: 14px; color: var(--warn); white-space: pre-wrap; }
       .msg.ok { color: var(--accent); }
       .note { font-size: 13px; color: var(--dim); line-height: 1.6; }
-      .tok { position: sticky; top: 0; z-index: 2; }
       @media (max-width: 520px) { .code { grid-template-columns: 1fr auto auto; } .code b { grid-column: 1 / -1; } }
+      .stats { overflow-x: auto; }
+      .stats table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      .stats th, .stats td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+      .stats th:first-child { text-align: left; white-space: normal; }
+      .stats thead th { color: var(--dim); font-weight: 400; font-size: 13px; }
+      .stats td small { color: var(--dim); font-size: 12px; }
+      .stats tr.sum th, .stats tr.sum td { border-bottom: 0; border-top: 2px solid var(--line); }
       footer { margin-top: 30px; font-size: 12px; color: var(--dim); line-height: 1.7; }
     </style>
   </head>

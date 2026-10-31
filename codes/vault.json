@@ -31,12 +31,21 @@
    "updated": "2026-10-31T11:01:57.300Z",
    "epk": "BI9H23LiquDuFtOOormxdZA9SwoL8I22UI1eI1Od1yy1U5G8qpd9JEmvg8EsEiOcmcDIDKofUFAUMvA34Mg79Kg=",
    "blob": "mh7MjzsqQwMI44/9H0hvsn2e1hkTAZL/cUlujwIxBEckETOExFcdUqLsUVGSJfS03rZlX6AfgXBz49CmVtO73pkZXXF+Ih1vlZVZZ6lDX59oFnbXC4H3eUY3rLRt+zJhTKbhsQ0GLWg="
+  },
+  "stats": {
+   "title": "방문자 카운터",
+   "path": "",
+   "kind": "stats",
+   "updated": "2026-10-31T12:14:35.933Z",
+   "epk": "BLIMtjoOvqe8esFfLTT4dqvnRlefLafEPQtry/fDaK0mN2mIAjaSk+GhJgCfATenr/q198N8xLunTT/gmhPkXOA=",
+   "blob": "3VaOU+wHnXtgm2QfRRFLSimlXeUtLLYRubjGShtqjCDHijPDGY7o/j028YuSxqgFO13+YFEWijeRMih35R7gk7i0h+LGvA+u25DhgShwUKFvLob27sa2H3izDU5tvNWMVaX7u6vrOvIBtSMMA/7trn7QA9/M8n0xoHm/27b053kr3huSx0fi+QbrNPVNFknPb9tc8FsskIAp9KBSR9o="
   }
  },
  "order": [
   "ig1",
   "ig2",
-  "steam1031"
+  "steam1031",
+  "stats"
  ],
  "adminUpdated": "2026-10-31T11:01:57.272Z"
 }

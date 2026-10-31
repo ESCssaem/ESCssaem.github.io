@@ -9,6 +9,9 @@ ESC쌤이 만든 수업 앱 모음입니다. 첫 화면에서 **XR 수업 앱**(
 ## 접속 코드 관리 (`codes/`)
 - 관리자 코드 하나로 접속 코드가 있는 모든 자료(ig1·steam1031 등)의 코드를 보고 바꾸는 화면. ig2는 자체 관리 화면(ig2/admin/) 링크. 금고 `codes/vault.json`(암호화). 도구·설명은 저장소 밖 `escssaem-site-codes/`. 첫 화면 footer에 링크.
 
+## 방문자 카운터 (`count.js`)
+- 첫 화면과 각 앱 첫 페이지의 `<script src="/count.js" defer>`가 Cloudflare Worker `escssaem-counter`에 앱 이름만 보낸다(방문자=그날 처음 연 브라우저, 열람=연 횟수, IP 저장 없음). 숫자는 접속 코드 관리 화면(`codes/`)의 '방문자' 표에서 본다. card/는 세지 않음. 서버·설치 스크립트는 저장소 밖 `escssaem-site-codes/counter/`. 새 앱 폴더를 추가하면 첫 페이지에 같은 한 줄을 넣는다.
+
 ## 연수, 특강, 발표 등 (`category: talk`)
 - `steam1031/` 2026 경기도형 과학중점학교 운영 성과 나눔(2026-10-31) 발표 자료: 발표 HTML(사진·글꼴을 안에 넣은 한 파일), 발표자료 PDF, 5분 발표 원고 PDF를 접속 코드 하나로 암호화해 올린 것(`d/*.bin`, `keys.json`). 첫 화면 '연수, 특강, 발표 등' 구역(교과목 수업 자료 아래)에 카드로 나온다. 빌드 도구와 코드는 저장소 밖(`steam-energy-poster/presentation/evidence-rebuild/outputs/claude-handoff/claude-revision/web-site`).
 
