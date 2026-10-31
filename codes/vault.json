@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "pub": "BM1HPIsObJALrQpsOyln8tHkKHbt8R4ox3YummuIRU68O8qWenuCUJkIF3v8h08GPwtpTt/z0rIpwYLudt/kBHg=",
+ "admin": {
+  "iter": 600000,
+  "salt": "OgcSRf8mBs2pAW25lj6+Qw==",
+  "blob": "kawaaUbeBQdsx4DGyfUKP5om5AO8nkWWyKe9/+qe6lcvipdEc7XSRA0hnoj47jeHVnOg1LguAXPIN5gnmAvZzrHazqOjBoHMyMjfMsFEr7xeTn6+jPJq/HssxS8f+kHb4GUcAz7kdn/lxR30HUsoqSpVMx5Qhz+dhMHAdn/q8Fn0+yFMYIqq/l3lj9+wx29n0yaY38QBDGGcmqVkJQsa/rLUJVMraA=="
+ },
+ "rec": "8KYUD50bveIbqwVAbt4HCVXNtPxUtHcuqf2cwRUR68sDdfMUdqiJkQzSYMS8z3ejK9/0w20jMpYVQWMvx7806eyEfXhEYoXyuKXI4bFTyRd4xytciUuxbyuspb6vR/DZ0gic+sX+82vcENTytBorn+bt0JPQdWnjg5MRYFNbnrK5aORqBqtGIj8oNztRrvcX5Wdct/NAu7IDHMDQdr8+J0xa6pUtlA==",
+ "items": {
+  "ig1": {
+   "title": "통합과학1 수업 자료",
+   "path": "ig1/",
+   "kind": "ig1",
+   "updated": "2026-10-31T11:01:57.298Z",
+   "epk": "BEVShlGJf9ZEM1nuSi/vnoeMq2hozkdWLjCsP68Ey1QdTitSkxthju53gYCjNTIp+sZlw8r0pUSFe3EB326xgVM=",
+   "blob": "PmuC7ILar9wfYeEBLVplV/2ZC09eQuupVgaiRvPrEAHcLhl/p0ruXJtw8Y1Y5bN3K46nw9hznHhOJf1Qh56yjxXwdK9VvyrL59U5mPtZ7bcnZotNnFtG4jg="
+  },
+  "ig2": {
+   "title": "통합과학2 수업 자료",
+   "path": "ig2/",
+   "kind": "link",
+   "url": "ig2/admin/",
+   "note": "통합과학2는 자체 관리 화면(교사 코드·복구 키트)에서 코드를 보고 바꿉니다.",
+   "updated": "2026-10-31T11:01:57.299Z"
+  },
+  "steam1031": {
+   "title": "학교 에너지자립 STEAM프로젝트 성과 발표",
+   "path": "steam1031/",
+   "kind": "single",
+   "updated": "2026-10-31T11:01:57.300Z",
+   "epk": "BI9H23LiquDuFtOOormxdZA9SwoL8I22UI1eI1Od1yy1U5G8qpd9JEmvg8EsEiOcmcDIDKofUFAUMvA34Mg79Kg=",
+   "blob": "mh7MjzsqQwMI44/9H0hvsn2e1hkTAZL/cUlujwIxBEckETOExFcdUqLsUVGSJfS03rZlX6AfgXBz49CmVtO73pkZXXF+Ih1vlZVZZ6lDX59oFnbXC4H3eUY3rLRt+zJhTKbhsQ0GLWg="
+  }
+ },
+ "order": [
+  "ig1",
+  "ig2",
+  "steam1031"
+ ],
+ "adminUpdated": "2026-10-31T11:01:57.272Z"
+}

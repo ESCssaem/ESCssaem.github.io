@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://api.github.com; img-src 'self' data:; base-uri 'none'; form-action 'none'" />
+    <title>접속 코드 관리</title>
+    <meta name="theme-color" content="#141f29" />
+    <style>
+      :root { --bg: #f3f6f4; --card: #ffffff; --ink: #1d2a24; --dim: #5d6b64; --accent: #2e7a5a; --line: #dfe6e2; --warn: #b4542c; --soft: #e7f1ec; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #141f29; --card: #1d2a35; --ink: #eef3f1; --dim: #a9b8b2; --accent: #5cd19e; --line: #2c3b47; --warn: #f0a07a; --soft: #22362f; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+      main { max-width: 760px; margin: 0 auto; padding: 40px 16px 64px; }
+      .crumb { font-size: 13px; color: var(--dim); margin-bottom: 10px; }
+      a { color: var(--accent); }
+      h1 { margin: 0 0 6px; font-size: 24px; }
+      .lead { margin: 0 0 22px; color: var(--dim); line-height: 1.6; font-size: 14px; }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
+      .card h2 { margin: 0 0 4px; font-size: 17px; }
+      .card .sub { font-size: 13px; color: var(--dim); margin: 0 0 10px; }
+      .tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+      .tabs button { background: transparent; color: var(--dim); border: 1px solid var(--line); padding: 6px 12px; font-size: 13px; }
+      .tabs button[aria-pressed=true] { background: var(--soft); color: var(--accent); border-color: var(--accent); }
+      label.f { display: block; font-weight: 700; font-size: 14px; margin: 10px 0 6px; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+      input[type=password], input[type=text] { flex: 1; min-width: 0; width: 100%; font: inherit; font-size: 15px; padding: 9px 11px; border-radius: 9px;
+        border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+      button { font: inherit; font-weight: 700; padding: 9px 15px; border-radius: 10px; border: 0; background: var(--accent); color: #fff; cursor: pointer; }
+      button:disabled { opacity: .6; cursor: not-allowed; }
+      button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); padding: 6px 11px; font-size: 13px; }
+      .code { display: grid; grid-template-columns: 6.5em minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 6px 0; border-top: 1px dashed var(--line); }
+      .code:first-of-type { border-top: 0; }
+      .code b { font-size: 14px; }
+      .code output { font-family: ui-monospace, Menlo, monospace; font-size: 15px; overflow-wrap: anywhere; }
+      .edit { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+      .msg { min-height: 1.4em; margin: 10px 0 0; font-size: 14px; color: var(--warn); white-space: pre-wrap; }
+      .msg.ok { color: var(--accent); }
+      .note { font-size: 13px; color: var(--dim); line-height: 1.6; }
+      .tok { position: sticky; top: 0; z-index: 2; }
+      @media (max-width: 520px) { .code { grid-template-columns: 1fr auto auto; } .code b { grid-column: 1 / -1; } }
+      footer { margin-top: 30px; font-size: 12px; color: var(--dim); line-height: 1.7; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="crumb"><a href="../">ESC쌤의 수업 앱</a> › 접속 코드 관리</div>
+      <h1>접속 코드 관리</h1>
+      <p class="lead">홈페이지에 올린 자료들의 접속 코드를 한곳에서 보고 바꿉니다. 관리자 코드(또는 복구 키)로 엽니다.</p>
+      <div id="app"><noscript>이 화면은 JavaScript가 필요합니다.</noscript></div>
+      <footer>관리자 코드·복구 키·GitHub 토큰은 이 창의 메모리에만 있고 어디에도 저장하지 않습니다. 창을 닫거나 '잠그기'를 누르면 사라집니다. 공용 기기에서는 쓰지 마세요.</footer>
+    </main>
+    <script src="core.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
