@@ -243,7 +243,7 @@
         const d = await r.json();
         let names = {};
         try { const list = await fresh("../apps.json"); await Promise.all(list.map(async (a) => { try { names[a] = (await fresh("../" + a + "/app.json")).title; } catch (_) {} })); } catch (_) {}
-        names.home = "첫 화면";
+        names.home = "첫 화면"; names.card = "디지털 명함";
         const cols = [["today", "오늘"], ["week", "7일"], ["month", "30일"], ["total", "전체"]];
         const sum = { app: "합계" };
         for (const [k] of cols) for (const t of ["visitors", "views"]) sum[k + "_" + t] = d.apps.reduce((n, a) => n + (a[k + "_" + t] || 0), 0);

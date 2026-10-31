@@ -39,13 +39,22 @@
    "updated": "2026-10-31T12:14:35.933Z",
    "epk": "BLIMtjoOvqe8esFfLTT4dqvnRlefLafEPQtry/fDaK0mN2mIAjaSk+GhJgCfATenr/q198N8xLunTT/gmhPkXOA=",
    "blob": "3VaOU+wHnXtgm2QfRRFLSimlXeUtLLYRubjGShtqjCDHijPDGY7o/j028YuSxqgFO13+YFEWijeRMih35R7gk7i0h+LGvA+u25DhgShwUKFvLob27sa2H3izDU5tvNWMVaX7u6vrOvIBtSMMA/7trn7QA9/M8n0xoHm/27b053kr3huSx0fi+QbrNPVNFknPb9tc8FsskIAp9KBSR9o="
+  },
+  "card": {
+   "title": "ESC쌤 디지털 명함",
+   "path": "card/",
+   "kind": "link",
+   "url": "card/admin/",
+   "note": "명함 내용은 명함 관리 화면(명함 서버 로그인)에서 고칩니다. 방문자 수는 위 방문자 표에 함께 나옵니다.",
+   "updated": "2026-10-31T12:19:09.321Z"
   }
  },
  "order": [
   "ig1",
   "ig2",
   "steam1031",
-  "stats"
+  "stats",
+  "card"
  ],
  "adminUpdated": "2026-10-31T11:01:57.272Z"
 }
