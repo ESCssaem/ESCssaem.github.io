@@ -102,7 +102,11 @@
         const open = document.createElement('a');
         // 외부 주소에서 운영하는 웹앱(kind: link)은 바로 열고, 소개는 제목 링크로 본다.
         open.href = a.kind === 'link' && a.url ? a.url : `${s}/`;
-        if (a.kind === 'link') open.rel = 'noopener';
+        if (a.kind === 'link') {
+          open.rel = 'noopener';
+          // 다른 주소에서 도는 앱은 소개 페이지를 거치지 않으므로 누를 때 그 앱 방문으로 센다(count.js)
+          open.addEventListener('click', () => { if (window.escCount) window.escCount(s); });
+        }
         open.textContent = OPEN[a.kind] || '바로 체험하기 →';
         links.append(open);
         if (a.kind === 'link') {
