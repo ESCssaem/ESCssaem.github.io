@@ -1,0 +1,17 @@
+{
+  "schema": "esc-xr-app/1",
+  "id": "steam1031",
+  "kind": "talk",
+  "category": "talk",
+  "title": "학교 에너지자립 STEAM프로젝트 성과 발표",
+  "series": "연수, 특강, 발표 등",
+  "updated": "2026-10-31",
+  "audience": "2026 경기도형 과학중점학교 운영 성과 나눔",
+  "topic": "발표 HTML·PDF·5분 원고 · 접속 코드 필요",
+  "devices": [
+    "PC·태블릿·휴대폰 브라우저"
+  ],
+  "author": "ESC쌤(양지고)",
+  "license": "검토·연수용으로만 사용 · 복제·배포 금지",
+  "icon": "icon.svg"
+}

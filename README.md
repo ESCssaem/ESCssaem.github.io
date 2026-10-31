@@ -6,8 +6,8 @@ ESC쌤이 만든 수업 앱 모음입니다. 첫 화면에서 **XR 수업 앱**(
 - 이 저장소에는 배포용 결과물과 소개 페이지만 있습니다. 앱은 수업에 자유롭게 활용할 수 있으며, 복제·수정 배포는 허락하지 않습니다.
 - 목록: `apps.json`의 폴더 이름 순서. 각 폴더의 `app.json`에서 `category`(`xr`/`web`, 없으면 `xr`)로 구역을 정하고, `kind`가 `link`이면 다른 주소에서 운영하는 웹앱(카드의 '바로 사용하기'는 `url`로 연결)입니다.
 
-## 발표 자료(목록에 넣지 않음)
-- `steam1031/` 2026 경기도형 과학중점학교 운영 성과 나눔(2026-10-31) 발표 자료: 발표 HTML(사진·글꼴을 안에 넣은 한 파일), 발표자료 PDF, 5분 발표 원고 PDF를 접속 코드 하나로 암호화해 올린 것(`d/*.bin`, `keys.json`). 첫 화면 목록에는 넣지 않았고 주소로만 들어간다. 빌드 도구와 코드는 저장소 밖(`steam-energy-poster/presentation/evidence-rebuild/outputs/claude-handoff/claude-revision/web-site`).
+## 연수, 특강, 발표 등 (`category: talk`)
+- `steam1031/` 2026 경기도형 과학중점학교 운영 성과 나눔(2026-10-31) 발표 자료: 발표 HTML(사진·글꼴을 안에 넣은 한 파일), 발표자료 PDF, 5분 발표 원고 PDF를 접속 코드 하나로 암호화해 올린 것(`d/*.bin`, `keys.json`). 첫 화면 '연수, 특강, 발표 등' 구역(교과목 수업 자료 아래)에 카드로 나온다. 빌드 도구와 코드는 저장소 밖(`steam-energy-poster/presentation/evidence-rebuild/outputs/claude-handoff/claude-revision/web-site`).
 
 ## 교과목 수업 자료
 - `ig1/` 통합과학1 수업 자료: `ig2/`와 같은 방식(접속 코드 암호화, t/c/s 세 판)의 통합과학1 1~3단원 16개 소단원. 원본 보기 쪽 이미지는 크기를 줄이려고 긴 변 1400px·JPEG 품질 50으로 넣었다. 빌드 도구와 코드는 저장소 밖(`통합과학&과학탐구실험/local-work/통합과학1/통합과학1_수업자료_사이트`), 접속 코드는 ig2와 다르다.
