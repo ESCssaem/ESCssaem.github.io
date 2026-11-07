@@ -28,7 +28,7 @@
       (async () => {
         const id = new URLSearchParams(location.search).get("l") || "";
         const msg = document.getElementById("msg"), fill = document.getElementById("fill");
-        if (!/^[IV]+-\d-\d\d$/.test(id)) { msg.innerHTML = '잘못된 주소입니다. <a href="./">목차로</a>'; return; }
+        if (!/^(?:[IV]+|X)-\d-\d\d$/.test(id)) { msg.innerHTML = '잘못된 주소입니다. <a href="./">목차로</a>'; return; }
         const v = savedKey();
         if (!v) { location.replace("./?next=" + id); return; }
         try {

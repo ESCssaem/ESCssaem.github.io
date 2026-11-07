@@ -47,6 +47,11 @@
       .go { margin-left: auto; font-size: 13px; color: var(--accent); font-weight: 700; white-space: nowrap; }
       .soon { margin-left: auto; font-size: 12px; color: var(--dim); white-space: nowrap; }
       .mid li.off { color: var(--dim); }
+      .big.extra { border-style: dashed; border-width: 2px; }
+      .big.extra > h2 { background: transparent; border-bottom: 1px dashed var(--line); }
+      .big.extra > h2 small { display: block; margin-top: 3px; font-size: 13px; font-weight: 400; color: var(--dim); }
+      .tag { font-size: 12px; color: var(--dim); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+      @media (max-width: 520px) { .tag { display: none; } }
       .admin { margin-top: 26px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
       .admin h2 { margin: 0 0 12px; font-size: 18px; }
       .admin h2 small { font-size: 12px; font-weight: 400; color: var(--dim); margin-left: 6px; }
@@ -110,6 +115,10 @@
           { n: "1", t: "과학 기술의 활용", q: ["III-1-90", 11], subs: [["III-1-01", "과학의 유용성과 필요성"], ["III-1-02", "과학 기술 사회에서 빅데이터 활용"]] },
           { n: "2", t: "과학 기술의 발전과 쟁점", q: ["III-2-90", 7], subs: [["III-2-01", "과학 기술과 미래 사회"], ["III-2-02", "과학 관련 사회적 쟁점과 과학 윤리"]] } ] },
       ];
+      // 융합 특별 수업: 교과서 단원 차례 밖의 번외 수업(여러 단원을 묶은 프로젝트·AI 융합 수업). 대단원 자리 id는 X.
+      //  eds: 이 판(교사·동교과·학생) 목차에만 보인다. 없으면 모든 판.
+      const EXTRA = { n: "＋", t: "융합 특별 수업", sub: "교과서 단원 차례 밖에서 여러 단원을 묶어 하는 번외 수업", mids: [
+        { n: "1", t: "AI 융합 수업", subs: [["X-1-01", "AI 데이터센터, 우리 지역에 와도 될까?", "Ⅱ-2 · Ⅲ 연계 · 3차시", ["teacher", "colleague"]]] } ] };
       const $ = (s) => document.querySelector(s);
       const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
 
@@ -142,6 +151,24 @@
           }
           box.append(big);
         }
+        // 맨 아래: 융합 특별 수업(이 판에서 열 수 있는 것만)
+        const xs = EXTRA.mids.map((m) => ({ ...m, subs: m.subs.filter(([id, , , eds]) => ready.includes(id) && (!eds || eds.includes(v.ed))) })).filter((m) => m.subs.length);
+        if (xs.length) {
+          const big = el("section", "big extra"), h = el("h2");
+          h.append(el("span", "", EXTRA.n), EXTRA.t, el("small", "", EXTRA.sub)); big.append(h);
+          for (const m of xs) {
+            const mid = el("div", "mid"), ol = el("ol");
+            mid.append(el("h3", "", m.n + ". " + m.t));
+            m.subs.forEach(([id, t, tag], i) => {
+              const li = el("li"); li.append(el("span", "num", "0" + (i + 1)));
+              const a = el("a", "", t); a.href = "view.html?l=" + id;
+              const go = el("a", "go", "열기 →"); go.href = a.href;
+              li.append(a); if (tag) li.append(el("span", "tag", tag)); li.append(go); ol.append(li);
+            });
+            mid.append(ol); big.append(mid);
+          }
+          box.append(big);
+        }
         $("#gate").hidden = true; $("#toc").hidden = false;
         mountAdmin(v, $("#admin"));
       }
@@ -162,7 +189,7 @@
           if (!v) { $("#msg").textContent = "코드가 맞지 않습니다."; return; }
           saveKey(v, $("#remember").checked); $("#code").value = ""; $("#msg").textContent = "";
           const next = new URLSearchParams(location.search).get("next");
-          if (next && /^[IV]+-\d-\d\d$/.test(next)) location.href = "view.html?l=" + next; else show();
+          if (next && /^(?:[IV]+|X)-\d-\d\d$/.test(next)) location.href = "view.html?l=" + next; else show();
         } catch (err) {
           $("#msg").textContent = "확인하지 못했습니다. 최신 브라우저(크롬·사파리·엣지)로 열어 주세요.";
         } finally { btn.disabled = false; }
