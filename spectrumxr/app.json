@@ -1,0 +1,19 @@
+{
+  "schema": "esc-xr-app/1",
+  "id": "spectrumxr",
+  "category": "web",
+  "title": "빛 쪼개기 관측대 · SpectrumXR",
+  "version": "0.1",
+  "updated": "2026-11-22",
+  "audience": "고등학교 1학년 통합과학1",
+  "topic": "우주의 시작과 원소 생성 — 연속·방출·흡수 스펙트럼으로 원소 식별",
+  "devices": [
+    "PC·휴대폰·태블릿 브라우저"
+  ],
+  "author": "ESC쌤(양지고)",
+  "license": "수업 활용 자유 · 무단 복제·수정 배포 금지",
+  "licenseDetail": "학교 수업·연수·비영리 교육에서 이 주소로 자유롭게 쓸 수 있습니다. 앱이나 그 일부를 복제·수정해 다른 곳에 배포하는 것은 허락하지 않습니다. © 2026 ESC쌤(양지고)",
+  "privacy": "계정이나 개인정보를 받지 않으며, 활동지 기록은 열려 있는 페이지 안에만 두고 어디에도 전송·저장하지 않습니다. 접속 수 집계를 위해 앱 이름과 당일 첫 방문 여부만 전송합니다.",
+  "url": "https://escssaem.github.io/spectrumxr/",
+  "icon": "images/icon-192.png"
+}

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>빛 쪼개기 관측대 · SpectrumXR 웹 수업판</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script src="/count.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+
+  <header class="app-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="3" y="12" width="20" height="8" rx="4" fill="#24365a"/>
+        <rect x="22" y="11" width="3" height="10" rx="1" fill="#8a9097"/>
+        <rect x="1" y="11" width="3" height="10" rx="1" fill="#15181b"/>
+        <path d="M25 16 L31 9 M25 16 L31 13 M25 16 L31 19 M25 16 L31 23" stroke-width="1.6" stroke-linecap="round" fill="none" stroke="url(#bm)"/>
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a4cff"/><stop offset=".35" stop-color="#1f8bff"/><stop offset=".6" stop-color="#2fbf4a"/><stop offset="1" stop-color="#ff3b2f"/></linearGradient></defs>
+      </svg>
+      <div>
+        <p class="brand-title">빛 쪼개기 관측대</p>
+        <p class="brand-sub">SpectrumXR 웹 수업판 v0.1 · 기준 Quest v0.2.8(10)</p>
+      </div>
+    </div>
+    <div class="header-status" aria-live="polite">
+      <span id="status-line" class="chip" data-testid="status-line">기본 · 암실 82%</span>
+      <span id="darkroom-state" class="chip chip-dark" data-state="off">가상 암실 꺼짐</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ======================= 시작 화면 ======================= -->
+    <section id="screen-start" class="screen start" aria-labelledby="start-title">
+      <div class="start-card">
+        <h1 id="start-title">빛 쪼개기 관측대</h1>
+        <p class="lead">분광기로 광원을 겨누고 원소의 '빛 지문'을 찾아요 · 통합과학1 우주의 시작과 원소의 생성</p>
+
+        <ol class="start-flow" aria-label="관찰 순서">
+          <li><span class="step-n">1</span>광원을 탭해 겨누기</li>
+          <li><span class="step-n">2</span>접안 시야에서 띠와 선 보기</li>
+          <li><span class="step-n">3</span>선 위치를 눈금으로 읽고 기록</li>
+        </ol>
+
+        <fieldset class="mode-pick">
+          <legend>원소 수</legend>
+          <button type="button" id="mode-basic" class="mode-card" aria-pressed="true">
+            <strong>기본 6종</strong>
+            <span>수소·헬륨·네온·수은·나트륨·리튬</span>
+          </button>
+          <button type="button" id="mode-advanced" class="mode-card" aria-pressed="false">
+            <strong>심화 14종</strong>
+            <span>기본 6종 + 아르곤·크립톤·제논·칼슘·철·칼륨·마그네슘·카드뮴</span>
+          </button>
+        </fieldset>
+
+        <details id="settings" class="settings">
+          <summary>수업 설정 <span id="settings-summary" class="muted">교실 어둡기 보통 (82%)</span></summary>
+          <div class="settings-body">
+            <div class="setting-row">
+              <span class="setting-name">가상 암실</span>
+              <button type="button" id="btn-darkness" class="btn btn-alt">교실 어둡기: 보통 (82%)</button>
+            </div>
+            <p class="muted small">실험대 배경을 어둡게 해 광원과 스펙트럼의 대비를 높여요. 마무리(6구역)와 시작 화면에서는 원래 밝기예요.</p>
+          </div>
+        </details>
+
+        <button type="button" id="btn-start" class="btn btn-primary btn-xl">시작하기 ▶</button>
+        <p class="credit">by ESC쌤</p>
+      </div>
+    </section>
+
+    <!-- ======================= 실험 화면 ======================= -->
+    <section id="screen-lab" class="screen lab" hidden aria-labelledby="zone-title">
+      <nav class="zone-nav" aria-label="구역 이동">
+        <ol id="zone-tabs" class="zone-tabs"></ol>
+      </nav>
+
+      <div class="lab-grid">
+        <section class="card task" aria-labelledby="zone-title">
+          <h2 id="zone-title">0구역 · 준비</h2>
+          <p id="zone-body" class="zone-body"></p>
+          <div id="zone-status" class="zone-status" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="card bench-card" aria-labelledby="bench-title">
+          <div class="card-head">
+            <h3 id="bench-title">실험대</h3>
+            <p class="muted small" id="bench-hint">광원을 탭(클릭)해 겨누거나, 빈 곳을 좌우로 끌어 조준해요.</p>
+          </div>
+          <div id="bench" class="bench" data-testid="bench">
+            <div class="bench-room"></div>
+            <div id="darkroom" class="darkroom" aria-hidden="true"></div>
+            <div class="bench-table"></div>
+            <div id="bench-sources" class="bench-sources"></div>
+            <div id="aim-line" class="aim-line" aria-hidden="true"><span class="aim-scope"></span></div>
+          </div>
+          <div class="aim-row">
+            <label for="aim-range">분광기 조준(좌우)</label>
+            <input id="aim-range" type="range" min="-550" max="550" step="1" value="500" aria-valuetext="분광기 받침">
+          </div>
+          <div class="scope-panel">
+            <svg id="scope-diagram" class="scope-diagram" viewBox="0 0 360 86" role="img" aria-labelledby="scope-diagram-title">
+              <title id="scope-diagram-title">손 분광기 광로: 광원 빛이 슬릿을 지나 회절격자 필름에서 파장별로 펼쳐져 접안부로 들어간다</title>
+            </svg>
+            <div class="align-meter">
+              <div class="align-text"><span id="target-name">겨눈 광원 없음</span> · <span id="align-word">벗어남</span> <span id="align-pct">0%</span></div>
+              <div class="meter" aria-hidden="true"><span id="align-bar"></span><i style="left:30%"></i><i style="left:60%"></i></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card eyepiece-card" aria-labelledby="eyepiece-title">
+          <div class="card-head">
+            <h3 id="eyepiece-title">접안 시야</h3>
+            <p class="muted small" id="eyepiece-caption">분광기 안에서 보이는 모습</p>
+          </div>
+          <div class="eyepiece-wrap">
+            <canvas id="eyepiece" class="eyepiece" width="1024" height="1024" tabindex="0" role="img" aria-label="접안 시야"></canvas>
+          </div>
+          <p id="eyepiece-readout" class="readout" aria-live="polite"></p>
+          <div id="reading-tools" class="reading-tools" hidden>
+            <div class="tool-row">
+              <button type="button" id="line-prev" class="btn btn-alt">◀ 옆 선</button>
+              <label class="nm-field"><span class="sr-only">커서 파장(nm)</span>
+                <input id="cursor-nm" type="number" inputmode="decimal" min="400" max="700" step="0.1" value="550.0"><span aria-hidden="true">nm</span>
+              </label>
+              <button type="button" id="line-next" class="btn btn-alt">옆 선 ▶</button>
+            </div>
+            <div class="tool-row fine">
+              <button type="button" id="cursor-m10" class="btn btn-ghost" aria-label="커서 10 nm 짧은 쪽">−10</button>
+              <button type="button" id="cursor-m1" class="btn btn-ghost" aria-label="커서 1 nm 짧은 쪽">−1</button>
+              <button type="button" id="cursor-p1" class="btn btn-ghost" aria-label="커서 1 nm 긴 쪽">+1</button>
+              <button type="button" id="cursor-p10" class="btn btn-ghost" aria-label="커서 10 nm 긴 쪽">+10</button>
+            </div>
+            <div class="tool-row">
+              <button type="button" id="btn-record" class="btn btn-primary">기록 (Enter)</button>
+              <button type="button" id="btn-undo" class="btn btn-alt">마지막 기록 지우기</button>
+            </div>
+            <p class="muted small">띠를 탭하면 가까운 선에 커서가 붙고, 좌우로 끌면 커서가 움직여요. 접안 시야를 선택한 뒤 ←/→ 1 nm, Shift 10 nm, PageUp/PageDown 옆 선, Enter 기록, Backspace 지우기.</p>
+          </div>
+        </section>
+
+        <section class="card controls-card" aria-labelledby="controls-title">
+          <h3 id="controls-title">실험 조작</h3>
+          <div id="zone-controls" class="zone-controls"></div>
+        </section>
+
+        <details id="record-panel" class="card record-card">
+          <summary><span>나의 기록</span> <span class="muted small">활동지 칸 순서</span> <span id="record-count" class="chip">0</span></summary>
+          <div id="record-sheet" class="record-sheet"></div>
+          <p class="muted small">이름·번호는 받지 않아요. 페이지를 새로 열면 지워져요(저장하지 않음).</p>
+        </details>
+      </div>
+
+      <nav class="bottom-nav" aria-label="구역 조작">
+        <button type="button" id="btn-prev" class="btn btn-alt">◀ 처음</button>
+        <button type="button" id="btn-reset" class="btn btn-alt">다시 하기</button>
+        <button type="button" id="btn-peek" class="btn btn-alt" aria-pressed="false">교실 밝게</button>
+        <button type="button" id="btn-next" class="btn btn-primary">다음 ▶</button>
+      </nav>
+    </section>
+  </main>
+
+  <dialog id="confirm-title" aria-labelledby="confirm-title-h">
+    <form method="dialog">
+      <h2 id="confirm-title-h">처음 화면으로 갈까요?</h2>
+      <p>다시 [시작하기]를 누르면 지금까지의 기록이 지워져요.</p>
+      <div class="dialog-actions">
+        <button type="submit" id="confirm-cancel" value="cancel" class="btn btn-alt" autofocus>취소</button>
+        <button type="submit" id="confirm-ok" value="ok" class="btn btn-primary">처음 화면</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
